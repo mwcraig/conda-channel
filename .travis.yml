@@ -65,6 +65,6 @@ script:
     # the latest known good version. It contains a fix for an issue in which
     # Windows is unwilling to empty the trash, causing a problem.
     - conda remove --force conda-build
-    - conda install conda-build=1.20.2
+    - conda install conda-build
     # Packages are uploaded as they are built.
     - if [[ -d recipes ]]; then conda build-all --inspect-channels="$INSPECT_CONDA_CHANNELS" --inspect-channels="$DESTINATION_CONDA_CHANNEL" --upload-channels="$DESTINATION_CONDA_CHANNEL" --matrix-condition="python $PYTHON_BUILD_RESTRICTIONS" recipes; fi
