@@ -9,6 +9,10 @@ os:
 env:
     global:
         - DESTINATION_CONDA_CHANNEL="openastronomy"
+        # The channel(s) below will be searched, in the order listed below,
+        # for packages matching the version being built. If found, they will
+        # be copied from the channels below instead of being built again.
+        - INSPECT_CONDA_CHANNELS="conda-forge $DESTINATION_CONDA_CHANNEL"
         - TARGET_ARCH="x64"
         - CONDA_INSTALL_LOCN="${HOME}/miniconda"
 
@@ -63,4 +67,4 @@ script:
     - conda remove --force conda-build
     - conda install conda-build=1.20.2
     # Packages are uploaded as they are built.
-    - if [[ -d recipes ]]; then conda build-all --inspect-channels="$DESTINATION_CONDA_CHANNEL" --upload-channels="$DESTINATION_CONDA_CHANNEL" --matrix-condition="python $PYTHON_BUILD_RESTRICTIONS" recipes; fi
+    - if [[ -d recipes ]]; then conda build-all --inspect-channels="$INSPECT_CONDA_CHANNELS" --upload-channels="$DESTINATION_CONDA_CHANNEL" --matrix-condition="python $PYTHON_BUILD_RESTRICTIONS" recipes; fi
