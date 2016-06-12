@@ -67,4 +67,4 @@ script:
     - conda remove --force conda-build
     - conda install conda-build=1.20.2
     # Packages are uploaded as they are built.
-    - if [[ -d recipes ]]; then conda build-all --inspect-channels="$INSPECT_CONDA_CHANNELS" --inspec-channels="$DESTINATION_CONDA_CHANNEL" --upload-channels="$DESTINATION_CONDA_CHANNEL" --matrix-condition="python $PYTHON_BUILD_RESTRICTIONS" recipes; fi
+    - if [[ -d recipes ]]; then conda build-all --inspect-channels="$INSPECT_CONDA_CHANNELS" --inspect-channels="$DESTINATION_CONDA_CHANNEL" --upload-channels="$DESTINATION_CONDA_CHANNEL" --matrix-condition="python $PYTHON_BUILD_RESTRICTIONS" recipes; fi
